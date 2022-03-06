@@ -20,11 +20,22 @@ public class Main {
         // Anonymous inner class implementation
         InnerClassEngineVehicle vehicle3 = new InnerClassEngineVehicle(vehicleWeightPounds, engineHorsePower) {
             public double getSpeedMph(double timeSec) {
+                // vehicleWeightPounds = 100; cannot be modified by anonymous inner class
                 return -1.0d;
             }
         };
 
         System.out.printf("Vehicle speed (%.2f sec) = %.2f mph%n", timeSec, vehicle3.getSpeedMph(timeSec));
+
+
+        InnerClassEngineVehicle vehicle4 = new InnerClassEngineVehicle(vehicleWeightPounds, engineHorsePower) {
+            public double getSpeedMph(double timeSec) {
+                double v = 2.0 * engineHorsePower * 746 * timeSec * 32.17 / vehicleWeightPounds;
+                return Math.round(Math.sqrt(v) * 0.68);
+            }
+        };
+
+        System.out.printf("Vehicle speed (%.2f sec) = %.2f mph%n", timeSec, vehicle4.getSpeedMph(timeSec));
 
 
     }
