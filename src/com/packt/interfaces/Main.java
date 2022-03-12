@@ -1,19 +1,18 @@
 package com.packt.interfaces;
 
-import java.util.Properties;
-
 public class Main {
 
     public static void main(String[] args) {
-        double timeSec = 10.0;
+
         int horsePower = 246;
-        int vehicleWeight = 4000;
-        Properties drivingConditions = new Properties();
-        drivingConditions.put("roadCondition", "Wet");
-        drivingConditions.put("tireCondition", "New");
-        SpeedModel speedModel = FactorySpeedModel.generateSpeedModel(drivingConditions);
-        Car car = FactoryVehicle.buildCar(4, vehicleWeight, horsePower);
-        car.setSpeedModel(speedModel);
-        System.out.printf("Car speed ( %.2f sec) = %.2f mph %n", timeSec, car.getSpeedMph(timeSec));
+        int payload = Truck.convertKgToPounds(1500);
+        int vehicleWeight = Truck.convertKgToPounds(1800);
+        //Truck truck = FactoryVehicle.buildTruck(payload, vehicleWeight, horsePower);
+        System.out.printf("Weight in pounds: %d%n", vehicleWeight);
+        //int kg = truck.getWeightKg(vehicleWeight);
+        int kg = Truck.convertPoundsToKg(vehicleWeight);
+        System.out.printf("Weight converted to Kg: %d%n", kg);
+        System.out.printf("Weight converted back to pounds: %d%n", Truck.convertKgToPounds(kg));
+
     }
 }
